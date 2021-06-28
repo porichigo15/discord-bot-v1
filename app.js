@@ -1,0 +1,24 @@
+// SECRET=YOUR_GITHUB_WEBHOOK_SECRET
+// CWD=/path/to/your/project
+// REMOTE=origin
+// SOCKET_PRIV="your_user:your_group"
+// GIT_AUTHOR="porichigo15"
+// GIT_EMAIL="por.porkaew15@gmail.com"
+
+const express = require('express')
+const bodyParser = require('body-parser')
+const app = express()
+const port = 3001;
+
+const discord = require('./components/discord')
+
+app.use(bodyParser.json());
+
+app.post('/webhook', function(req, res) {
+    discord.init(req.body)
+    res.sendStatus(200);
+})
+
+app.listen(port, function() {
+    console.log('listening on port ' + port)
+})
