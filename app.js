@@ -14,8 +14,10 @@ const discord = require('./components/discord')
 
 app.use(bodyParser.json());
 
-app.post('/webhook', function(req, res) {
-    discord.init(req.body)
+app.post('/webhook', async function(req, res) {
+    await discord.init(req.body)
+    await discord.login()
+    await discord.announceCommit()
     res.sendStatus(200);
 })
 
