@@ -1,0 +1,27 @@
+{
+  "name": "discord-bot-v1",
+  "version": "1.0.0",
+  "description": "this project about bot for discord to announce deployment from github",
+  "main": "app.js",
+  "dependencies": {
+    "nodegit": "^0.27.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/porichigo15/discord-bot-v1.git"
+  },
+  "keywords": [
+    "discord",
+    "bot"
+  ],
+  "author": "lomana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/porichigo15/discord-bot-v1/issues"
+  },
+  "homepage": "https://github.com/porichigo15/discord-bot-v1#readme"
+}

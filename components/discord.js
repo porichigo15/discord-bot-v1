@@ -32,7 +32,8 @@ async function initDiscord(githubBody) {
 
 async function announceCommit() {
     let channel = client.channels.cache.get(channelId);
-    if (messsageForDiscord) {
+    if (messsageForDiscord && channel) {
+        console.log(channel)
         await channel.send(messsageForDiscord)
     }
 }
