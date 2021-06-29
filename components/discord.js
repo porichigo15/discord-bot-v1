@@ -4,9 +4,8 @@ const Discord = require('discord.js')
 var moment = require('moment')
 
 const client = new Discord.Client()
-const environment = require('dotenv').config().parsed
 
-const channelId = environment.CHANNEL_ID
+const channelId = process.env.CHANNEL_ID
 
 let messsageForDiscord
 
@@ -19,7 +18,7 @@ async function init(githubBody) {
 }
 
 async function login() {
-    const token = environment.TOKEN
+    const token = process.env.TOKEN
 
     return new Promise((resolve) => {
         client.login(token)
