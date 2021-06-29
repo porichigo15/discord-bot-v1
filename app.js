@@ -8,7 +8,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
-const port = 3001;
 
 const discord = require('./components/discord')
 
@@ -17,8 +16,4 @@ app.use(bodyParser.json());
 app.post('/webhook', async function(req, res) {
     await discord.init(req.body)
     res.sendStatus(200);
-})
-
-app.listen(port, function() {
-    console.log('listening on port ' + port)
 })
