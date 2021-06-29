@@ -4,6 +4,7 @@
   "description": "this project about bot for discord to announce deployment from github",
   "main": "app.js",
   "dependencies": {
+    "discord.js": "^12.5.3",
     "express": "^4.17.1",
     "moment": "^2.29.1",
     "nodegit": "^0.27.0"
