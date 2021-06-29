@@ -11,29 +11,38 @@ const channelId = environment.CHANNEL_ID
 let messsageForDiscord
 
 async function init(githubBody) {
-    await initDiscord(githubBody)
+    await login().then(() => {
+        initDiscord(githubBody).then(() => {
+            announceCommit()
+        })
+    })
 }
 
 async function login() {
     const token = environment.TOKEN
 
-    console.log('login')
-    await client.login(token)
+    return new Promise((resolve) => {
+        client.login(token)
+        resolve()
+    })
 }
 
 async function initDiscord(githubBody) {
-    setMessageForDiscord(githubBody)
+    return new Promise((resolve) => {
+        setMessageForDiscord(githubBody)
+    
+        client.on('ready', () => {
+            console.log("Connected with " + client.user.tag)
+            client.user.setActivity("learning github webhook")
 
-    client.on('ready', async () => {
-        console.log("Connected with " + client.user.tag)
-        client.user.setActivity("learning github webhook")
+            resolve()
+        })
     })
 }
 
 async function announceCommit() {
-    let channel = client.channels.cache.get(channelId);
+    let channel = client.channels.cache.get(channelId)
     if (messsageForDiscord && channel) {
-        console.log(channel)
         await channel.send(messsageForDiscord)
     }
 }
@@ -48,7 +57,7 @@ async function setMessageForDiscord(githubBody) {
 
     if (data.repository) {
 
-        const dateString = moment().format("DD MM YYYY hh:mm:ss")
+        const dateString = moment().format("DD/MM/YYYY HH:mm:ss")
 
         message += `Repository name: ${data.repository.name} \n`
         message += `Pusher: ${data.pusher.name} \n`

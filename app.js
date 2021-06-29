@@ -16,8 +16,6 @@ app.use(bodyParser.json());
 
 app.post('/webhook', async function(req, res) {
     await discord.init(req.body)
-    await discord.login()
-    await discord.announceCommit()
     res.sendStatus(200);
 })
 
