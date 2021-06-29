@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/porichigo15/discord-bot-v1/issues"
   },
-  "homepage": "https://github.com/porichigo15/discord-bot-v1#readme"
+  "homepage": "https://github.com/porichigo15/discord-bot-v1#readme",
+  "engines": {
+    "node": "14.x"
+  }
 }
