@@ -11,9 +11,16 @@ const app = express()
 
 const discord = require('./components/discord')
 
+const host = '0.0.0.0';
+const port = process.env.PORT || 3000;
+
 app.use(bodyParser.json());
 
 app.post('/webhook', async function(req, res) {
     await discord.init(req.body)
     res.sendStatus(200);
 })
+
+app.listen(port, host, function() {
+    console.log("Server started.......");
+  });
